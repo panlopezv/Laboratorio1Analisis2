@@ -15,10 +15,9 @@ import javax.persistence.Persistence;
  * @author EST1629311
  */
 public abstract class Conexion {
-    private Conexion unicaConexion;
-    private List<Observador> observadores;
-    private EntityManager em;
-    private void iniciarConexion(String persistenceUnitName){
+    public List<Observador> observadores;
+    public EntityManager em;
+    public void iniciarConexion(String persistenceUnitName){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         em=emf.createEntityManager();
     }
