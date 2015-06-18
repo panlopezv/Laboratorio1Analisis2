@@ -46,7 +46,7 @@ public class ConexionEspecifica extends Conexion{
     }
     
     @Override
-    void editar(Persona p) throws Exception {
+    public void editar(Persona p) throws Exception {
         controladorPersona.edit(p);
         notificar();
     }
