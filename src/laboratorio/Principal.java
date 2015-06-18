@@ -5,19 +5,16 @@
  */
 package laboratorio;
 
-import interfases.ConexionEspecifica;
-
 /**
  *
  * @author EST1629311
  */
-public class Laboratorio {
+public class Principal {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ConexionEspecifica ce = ConexionEspecifica.getConexionEspecifica("LaboratorioPU");
     }
     
 }
