@@ -23,9 +23,14 @@ public class Principal {
     public static void main(String[] args){
         ConexionEspecifica ce = ConexionEspecifica.getConexionEspecifica("LaboratorioPU");
         ModeloTablaPersonas mTabla = new ModeloTablaPersonas(ce.getControladorPersona().findPersonaEntities());
+        
         UI_1 p = new UI_1(mTabla,ce);
         ce.agregarObservador(p);
         p.setVisible(true);
+
+        UI_2 o = new UI_2(ce, ce.getControladorPersona().findPersonaEntities());
+        ce.agregarObservador(o);
+        o.setVisible(true);
     }
     
 }
