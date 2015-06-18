@@ -39,6 +39,18 @@ public class ConexionEspecifica extends Conexion{
         notificar();
     }
     
+    @Override
+    public void eliminar(int id) throws Exception{
+        controladorPersona.destroy(id);
+        notificar();
+    }
+    
+    @Override
+    void editar(Persona p) throws Exception {
+        controladorPersona.edit(p);
+        notificar();
+    }
+    
     public List<Persona> mostrar(){
         return controladorPersona.findPersonaEntities();
     }
