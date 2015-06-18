@@ -21,6 +21,7 @@ public abstract class Conexion {
     private EntityManagerFactory emf;
     
     abstract void insertar(Persona p) throws Exception;
+    abstract void eliminar(int id) throws Exception;
     
     protected void iniciarConexion(String persistenceUnitName){
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
