@@ -5,16 +5,27 @@
  */
 package laboratorio;
 
+import interfases.ConexionEspecifica;
+import java.util.List;
+import modelos.ModeloTablaPersonas;
+import persistence.Persona;
+
 /**
  *
  * @author EST1629311
  */
 public class Principal {
 
+    public static List<Persona> personas;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        ConexionEspecifica ce = ConexionEspecifica.getConexionEspecifica("LaboratorioPU");
+        ModeloTablaPersonas mTabla = new ModeloTablaPersonas(ce.getControladorPersona().findPersonaEntities());
+        UI_1 p = new UI_1(mTabla,ce);
+        ce.agregarObservador(p);
+        p.setVisible(true);
     }
     
 }
