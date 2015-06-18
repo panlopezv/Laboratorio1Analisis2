@@ -5,23 +5,28 @@
  */
 package interfases;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import persistence.Persona;
 
 /**
  *
  * @author EST1629311
  */
+// Sujeto (Objeto observable)
 public abstract class Conexion {
     private List<Observador> observadores;
     private EntityManagerFactory emf;
-    public void iniciarConexion(String persistenceUnitName){
+    
+    abstract void insertar(Persona p) throws Exception;
+    
+    protected void iniciarConexion(String persistenceUnitName){
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
+        observadores=new ArrayList<>();
     }
-    abstract void consultarServidor();
-
+    
     public List<Observador> getObservadores() {
         return observadores;
     }
@@ -37,4 +42,18 @@ public abstract class Conexion {
     public void setEm(EntityManagerFactory emf) {
         this.emf = emf;
     }    
+    
+    public void agregarObservador(Observador o){
+        observadores.add(o);
+    }
+    
+    public void eliminarObservador(Observador o){
+        observadores.remove(o);
+    }
+    
+    public void notificar(){
+        observadores.stream().forEach((o) -> {
+            o.actualizar();
+        });
+    }
 }
